@@ -20,15 +20,15 @@ class Video
         return $this->visibility;
     }
 
-    /* deprecated
+    /* deprecated */
     public function checkIfVisibilityIsValidAndUpdateIt(int $visibility): void
     {
-        if (in_array($visibility, [self::PUBLIC, self::PRIVATE])) {
-            $this->visibility = $visibility;
-        } else {
+        if (!in_array($visibility, [self::PUBLIC, self::PRIVATE])) {
             throw new \InvalidArgumentException('Invalid visibility');
         }
-    }*/
+
+        $this->visibility = $visibility;
+    }
 
     public function getAgeLimit(): int
     {
