@@ -11,8 +11,8 @@ class Student
     private Email $email;
     private DateTimeInterface $birthDay;
     private WatchedVideos $watchedVideos;
-    private string $fName;
-    private string $lName;
+    private string $fullName;
+    private string $lastName;
     public string $street;
     public string $number;
     public string $province;
@@ -25,8 +25,8 @@ class Student
         $this->watchedVideos = new WatchedVideos();
         $this->email = $email;
         $this->birthDay = $birthDay;
-        $this->fName = $fullName;
-        $this->lName = $lastName;
+        $this->fullName = $fullName;
+        $this->lastName = $lastName;
         $this->street = $street;
         $this->number = $number;
         $this->province = $province;
@@ -37,7 +37,7 @@ class Student
 
     public function fullName(): string
     {
-        return "{$this->fName} {$this->lName}";
+        return "{$this->fullName} {$this->lastName}";
     }
 
     public function email(): string
