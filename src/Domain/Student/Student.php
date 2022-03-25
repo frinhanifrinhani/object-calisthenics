@@ -9,7 +9,7 @@ use DateTimeInterface;
 class Student
 {
     private Email $email;
-    private DateTimeInterface $bd;
+    private DateTimeInterface $birthDay;
     private WatchedVideos $watchedVideos;
     private string $fName;
     private string $lName;
@@ -20,13 +20,13 @@ class Student
     public string $state;
     public string $country;
 
-    public function __construct(Email $email, DateTimeInterface $bd, string $fName, string $lName, string $street, string $number, string $province, string $city, string $state, string $country)
+    public function __construct(Email $email, DateTimeInterface $birthDay, string $fullName, string $lastName, string $street, string $number, string $province, string $city, string $state, string $country)
     {
         $this->watchedVideos = new WatchedVideos();
         $this->email = $email;
-        $this->bd = $bd;
-        $this->fName = $fName;
-        $this->lName = $lName;
+        $this->birthDay = $birthDay;
+        $this->fName = $fullName;
+        $this->lName = $lastName;
         $this->street = $street;
         $this->number = $number;
         $this->province = $province;
@@ -35,19 +35,19 @@ class Student
         $this->country = $country;
     }
 
-    public function getFullName(): string
+    public function fullName(): string
     {
         return "{$this->fName} {$this->lName}";
     }
 
-    public function getEmail(): string
+    public function email(): string
     {
         return $this->email;
     }
 
-    public function getBd(): DateTimeInterface
+    public function birthDay(): DateTimeInterface
     {
-        return $this->bd;
+        return $this->birthDay;
     }
 
     public function watch(Video $video, DateTimeInterface $date)
@@ -74,7 +74,7 @@ class Student
     public function age(): int
     {
         $today = new \DateTimeImmutable();
-        $dateInterval = $this->getBd()->diff($today);
+        $dateInterval = $this->birthDay()->diff($today);
         return $dateInterval->y;
     }
 
