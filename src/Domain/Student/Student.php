@@ -71,4 +71,11 @@ class Student
 
     }
 
+    public function age(): int
+    {
+        $today = new \DateTimeImmutable();
+        $dateInterval = $this->getBd()->diff($today);
+        return $dateInterval->y;
+    }
+
 }
