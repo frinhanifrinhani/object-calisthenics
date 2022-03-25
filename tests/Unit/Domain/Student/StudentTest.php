@@ -2,11 +2,13 @@
 
 namespace Alura\Calisthenics\Tests\Unit\Domain\Student;
 
+use Alura\Calisthenics\Domain\Address\Address;
 use Alura\Calisthenics\Domain\Email\Email;
 use Alura\Calisthenics\Domain\Student\FullName;
 use Alura\Calisthenics\Domain\Student\Student;
 use Alura\Calisthenics\Domain\Video\Video;
 use PHPUnit\Framework\TestCase;
+use function PHPUnit\Framework\assertTrue;
 
 class StudentTest extends TestCase
 {
@@ -18,13 +20,28 @@ class StudentTest extends TestCase
             new Email('email@example.com'),
             new \DateTimeImmutable('1997-10-15'),
             new FullName('Vinicius', 'Dias'),
+            new Address(
             'Rua de Exemplo',
             '71B',
             'Meu Bairro',
             'Minha Cidade',
             'Meu estado',
-            'Brasil'
+            'Brasil')
         );
+    }
+
+    public function testStudentAddressIsFalse()
+    {
+        $address =  new Address(
+            'Rua de Exemplo',
+            '71B',
+            'Meu Bairro',
+            'Minha Cidade',
+            'Meu estado',
+            'Brasil');
+
+        self::assertNotEmpty($address);
+
     }
 
     public function testStudentWithoutWatchedVideosHasAccess()
